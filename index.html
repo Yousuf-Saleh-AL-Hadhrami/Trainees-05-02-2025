@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Page One</title>
+</head>
+<link rel="stylesheet" href="./css/style.css">
+<link rel="stylesheet" href="./css/style2.css">
+
+<!-- Internal Style -->
+<style>
+    h1{
+        color:green;
+    }
+</style>
+<body>
+
+    <!-- Inline Style -->
+    <h1 style="color:red; text-align: center;">Welcome Trainees</h1>
+    <h1 style="color:red; text-align: center;">Welcome Trainees</h1>
+    <h1 style="color:red; text-align: center;">Welcome Trainees</h1>
+
+
+    <form action="login.php" method="post">
+        <label for="username">Username</label>
+        <input type="text" name="username">
+         <label for="password">Password</label>
+         <input type="text" name="password">
+         <button type="submit">Login</button>
+    </form>
+
+    <img src="./images/images.webp" alt="Cat">
+    <img src="./images/images.webp" alt="Cat">
+
+    <hr>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Email</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <td>10</td>
+                <td>Yousuf AL Hadhrami</td>
+                <td>Izki</td>
+                <td>moe@gmail.com</td>
+                <td>
+                    <a href="edit.php?id=10" class="btn-primary">Edit</a>
+
+                    <form action="delete.php" action="post">
+                        <button type="submit" class="btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    
+</body>
+</html>
