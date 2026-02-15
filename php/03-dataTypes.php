@@ -1,17 +1,17 @@
 <?php 
 
-$name = "Yousuf";
-$salary = 100;
-$gpa = 3.13;
-$friends = ["Ibrahim","Ahmed","Osama"];
-$status = null;
-$success = false;
+$name = "Yousuf"; // string 
+$salary = 100;  // integer
+$gpa = 3.13; // double
+$friends = ["Ibrahim","Ahmed","Osama"]; // array
+$status = null; // NULL
+$success = false; // Boolean
 
 class Book{
 
 }
 
-$book1 = new Book();
+$book1 = new Book(); // object 
 
 
 echo gettype($gpa);
