@@ -5,9 +5,9 @@ $title = 'Users';
 include "./../includes/header.php";
 include "./../config/Authenticate.php";
 include "./../includes/database.php";
+include "./../includes/functions.php";
 
 
-$path = $path = __DIR__ . '/../assets/uploads/';
 
 if($_SERVER['REQUEST_METHOD'] == 'POST')
     {
@@ -18,16 +18,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
         $hashedPassword = password_hash("1234567", PASSWORD_DEFAULT);
 
         $temproray_path = $_FILES['image']['tmp_name'];
+        $path = __DIR__ . '/../assets/uploads/';
 
-        $name2 = $_FILES['image']['name'];
+        $image_name = [];
 
-        $extesnion = explode('.', $name2);
-        $extension2 = strtolower(end($extesnion));
+        $image_name = uploadImage($_FILES['image']);
 
-        $image_name = time() . '-'. rand(1,1000).'.'.$extension2;
-       
-         $realImage = $path.$image_name;
-    
+        $realImage = $path.$image_name;
+
+        if(!empty($image_name) && is_string($image_name)){
 
         $insert = " INSERT INTO users VALUES($id , '$username', '$hashedPassword', '$name','$role', '$image_name');";
 
@@ -43,8 +42,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                 exit;
             }
 
+            }else {
+
+              echo "<div class='alert alert-danger'> لا يمكن رفع الصورة حدث خطأ</div>";
+            }
 
     }
+
+    
+
+    
 
 
 
@@ -96,7 +103,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST')
                          <!-- Image -->
                         <div class="mb-3">
                             <label for="image" class="form-label">Image</label>
-                            <input type="file" name="image" class="form-control" id="image">
+                            <input type="file" name="image" class="form-control" id="image" accept=".jpg, .png, .pdf">
                         </div>
 
 

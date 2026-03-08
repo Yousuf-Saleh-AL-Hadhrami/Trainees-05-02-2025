@@ -1,5 +1,7 @@
 <?php 
 declare(strict_types=1);
+date_default_timezone_set("Asia/Muscat");
+
 // function vs procedure
 
 // Built-in functions 
@@ -120,7 +122,9 @@ $words = '';
 
    }
 
-echo translate('Services');
+// echo translate('Services');
+
+
 
 
 
