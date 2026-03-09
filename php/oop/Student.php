@@ -5,18 +5,18 @@ class Student extends Person
     public $studentId;
     public $major;
 
-    public $gpa;
+    private $gpa;
 
     const AGE = 21;
 
-    // public function __construct($id = null, $name = null, $address = null, $hobbies = [] , $stdid = null , $major = null  , $gpa = null)
-    // {
-    //     parent::__construct($id, $name, $address, $hobbies);
+    public function __construct($id = null, $name = null, $address = null, $hobbies = [] , $stdid = null , $major = null )
+    {
+        parent::__construct($id, $name, $address, $hobbies);
 
-    //     $this->studentId = $stdid;
-    //     $this->major = $major;
-    //     $this->gpa = $gpa;
-    // }
+        $this->studentId = $stdid;
+        $this->major = $major;
+
+    }
 
 
     public function setStudentId($stdid)
@@ -33,7 +33,6 @@ class Student extends Person
 
         return $this;
     }
-
     public function setGpg($g)
     {
         $this->gpa = $g;
@@ -41,6 +40,7 @@ class Student extends Person
         return $this;
     }
 
+    // Method Overrding 
     public function getDetails()
     {
         return

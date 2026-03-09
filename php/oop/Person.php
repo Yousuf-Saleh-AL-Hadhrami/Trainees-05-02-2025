@@ -1,6 +1,6 @@
 <?php 
 declare(strict_types=1);
-class Person
+ class Person
 {
 
 // Properties
@@ -12,7 +12,7 @@ class Person
 
    public static $counter = 0; // static property for class
 
-   const AGE = 18;
+   public const AGE = 18;
 
    public function __construct($id = null , $name = null , $address = null , $hobbies = [])
    {
@@ -83,12 +83,18 @@ class Person
    }
 
 
-   public function getDetails()
+ protected function getDetails()
    {
     return "Id  => " . $this->id . "<br>" .
            "Name  => " . $this->name . "<br>" .
            "Address  => " . $this->address . "<br>" .
            "Hobbies => " . implode("-", $this->hobbies);
+   }
+
+
+   public function showDetails()
+   {
+      return $this->getDetails();
    }
 
 }

@@ -4,15 +4,26 @@ header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
 header("Expires: 0");
 
+// $lang = $_SERVER['HTTP_ACCEPT_LANGUAGE'];
+
+// $explodedString = explode(',', $lang);
+// echo $explodedString[0];
+
+$langFromUrl = isset($_GET['lang']) ? $_GET['lang'] : 'en';
+
+
 $title = 'Users';
+
 include "./../includes/header.php";
 include "./../config/Authenticate.php";
 include "./../includes/database.php";
+include "./../includes/functions.php";
+
 
 ?>
 
 <div class="container">
-    <h1 class="text-center text-primary my-2">Users</h1>
+    <h1 class="text-center text-primary my-2"><?= translate('Users') ?></h1>
 
 <?php 
 
@@ -27,6 +38,11 @@ echo "<div class='alert alert-danger'>No Users Found!</div>";
 
 <a href="create.php" class="btn btn-info btn-sm m-2">Create New User</a>
 <?php 
+
+$valueAfterDecryption = decryptCookie($_COOKIE['test'], 25369);
+
+echo $valueAfterDecryption;
+
 if(isset($_SESSION['success'])): ?>
 <div class="alert alert-success"><?= $_SESSION['success'] ?></div>
 <?php 
