@@ -1,20 +1,45 @@
 <?php 
 declare(strict_types=1);
 
+// require "Car.php";
+// require "Person.php";
+// require "Rules.php";
+// require "Exams.php";
+// require "Courses.php";
+// require "University.php";
+// require "Student.php";
+// require "Employee.php";
+// require "DailyEmployee.php";
 
-require "Person.php";
-require "Student.php";
-require "Employee.php";
-require "DailyEmployee.php";
+require './vendor/autoload.php';
+
+use Carbon\Carbon;
+use Src\Persons\DailyEmployee;
+use Src\Persons\Employee;
+use Src\Persons\Person;
+use Src\Persons\Student;
+use Src\Universities\University;
 
 
+$now = new Carbon();
+$now->setLocale('ar');
+
+$date = Carbon::create(2026, 1, 1);
+
+echo $date->diffForHumans();
 
 
-$p1 = new Person(name:"Nasser");
-$p2 = new Person;
-$p3 = new Person;
+               // Named parameters
+$p1 = new Person(name:"Nasser", hobbies: ["Hobby1","Hobby2"], id: 500, address: "Izki");
+// $p2 = new Person;
+// $p3 = new Person;
 
-$student1 = new Student(name:"Sultan");
+$unviversity = new University("Sultan Qaboos University");
+$unviversity2 = new University("Nizwa University of Technology and applied science");
+
+
+$student1 = new Student($id = null, "Yousuf" , $address = '' , $hobbies = [] , 1000, "IT", $unviversity);
+$student2 = new Student($id = null, "Ibrahim" , $address = '' , $hobbies = [] , 3000, "IT", $unviversity2);
 
 $emp1 = new Employee();
 
@@ -38,7 +63,7 @@ echo"<br>";
 
 
 
-echo $emp1->setName("Akram AL Alawi")
+/*echo $emp1->setName("Akram AL Alawi")
      ->setId(5000)
      ->setAddress(" AL Hamra")
      ->setHobbies(["Networking","Programming","Football"])
@@ -52,37 +77,27 @@ echo $emp1->setName("Akram AL Alawi")
    //   ->deduct(10)
      ->showDetails();
 
+     */
+
 echo"<br>";
 echo"<br>";
 
 
-
-
-$p1 ->setName("Yousuf")
-   ->setAddress("Izki")
-   ->setId(100)
-   ->setHobbies(["Programming","Reading","Swimming"]);
-
-
-$p2->setName("Ibrahim");
-$p2->setAddress("Nizwa");
-$p2->setId(200);
-$p2->setHobbies(["Networking","Reading","Swimming"]);
-
-
-$p3->setName("Ahmed");
-$p3->setAddress("Nizwa");
-$p3->setId(300);
-$p3->setHobbies(["Networking","Running","Play Station"]);
+// $p3->setName("Ahmed");
+// $p3->setAddress("Nizwa");
+// $p3->setId(300);
+// $p3->setHobbies(["Networking","Running","Play Station"]);
 
 
 echo $student1->setId(500)
-              ->setName("Ali")
-              ->setAddress("Manha")
+              //->setName("Ali")
+              ->setAddress("Manh")
               ->setHobbies(['Tennis'])
               ->setStudentId(205690)
               ->setMajor("Software Engineering")
               ->setGpg(3.7)
+              ->setRules(["Absence not More 30%", "Grade not less than 2","Must Park your car in students parks"])
+              ->setCourses(['HTML','CSS','JAVASCRIPT','PHP'])
               ->getDetails();
 
 
@@ -90,41 +105,61 @@ echo $student1->setId(500)
 echo"<br>";
 echo"<br>";
 
+echo $student2->setId(700)
+              //->setName("Ali")
+              ->setAddress("Nizwa")
+              ->setHobbies(['Football'])
+              ->setStudentId(20565890)
+              ->setMajor("Software Engineering")
+              ->setGpg(3.7)
+              ->setRules(["Absence not More 30%", "Grade not less than 2","Must Park your car in students parks"])
+              ->setCourses(['HTML','CSS','JAVASCRIPT','PHP'])
+              ->getDetails();
 
-echo $p1->showDetails();
+
+
+
+echo $p1->setCarNumber(4025)
+         ->setName("Yousuf")
+        ->setCarColor("White")
+         ->setCarName("Camry")
+         ->showDetails();
 echo"<br>";
 echo"<br>";
-echo $p2->showDetails();
+// echo $p2->showDetails();
 echo"<br>";
 echo"<br>";
-echo $p3->showDetails();
+// echo $p3->showDetails();
 
 echo"<br>";
 echo"<br>";
 
 
-echo Student::AGE;
+// echo Student::AGE;
 
 echo"<br>";
 echo"<br>";
 
 // echo Person::$counter;
-echo Person::getCounter();
+// echo Person::getCounter();
 
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
+// if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
-   $id = (int)$_POST['id'];
+//    $id = (int)$_POST['id'];
+//    $days = (int)$_POST['days'];
+//    $rate = (int)$_POST['rate'];
 
-    echo $dailyEmp1->setName($_POST['name'])
-    ->setId($id)
-              ->setAddress($_POST['address'])
-              ->setDays($_POST['days']) 
-              ->setRate($_POST['rate']) 
-              ->setTotalSalary()
-              ->getDetails();
 
-}
+//     echo $dailyEmp1->setName($_POST['name'])
+//     ->setId($id)
+//               ->setAddress($_POST['address'])
+//               ->setDays($days) 
+//               ->setRate($rate) 
+//               ->setTotalSalary()
+//               ->getDetails();
+
+// }
 
 
 
